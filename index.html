@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Task Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>TaskMaster - Task Management</h1>
+    </header>
+    <main>
+        <div class="container" id="todo">
+            <h2>To Do</h2>
+            <div class="task-list" id="todo-tasks">
+                <!-- Tasks to do will be displayed here -->
+            </div>
+        </div>
+        <div class="container" id="in-progress">
+            <h2>In Progress</h2>
+            <div class="task-list" id="in-progress-tasks">
+                <!-- Tasks in progress will be displayed here -->
+            </div>
+        </div>
+        <div class="container" id="done">
+            <h2>Done</h2>
+            <div class="task-list" id="done-tasks">
+                <!-- Completed tasks will be displayed here -->
+            </div>
+        </div>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">New Task</h2>
+            <input type="text" id="task-title" placeholder="Task Title">
+            <input type="text" id="task-assignee" placeholder="Assignee">
+            <button id="save-task-btn">Save</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
