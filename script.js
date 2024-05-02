@@ -1,4 +1,4 @@
-// Obtendo elementos do DOM
+
 const todoTasks = document.getElementById("todo-tasks");
 const inProgressTasks = document.getElementById("in-progress-tasks");
 const doneTasks = document.getElementById("done-tasks");
@@ -9,10 +9,9 @@ const taskAssigneeInput = document.getElementById("task-assignee");
 const saveTaskBtn = document.getElementById("save-task-btn");
 const closeBtn = document.getElementsByClassName("close")[0];
 
-// Dados falsos de tarefas
+
 let tasks = [];
 
-// Listeners de eventos do modal
 window.onclick = event => {
     if (event.target == modal) {
         closeModal();
@@ -23,7 +22,6 @@ closeBtn.onclick = () => {
     closeModal();
 }
 
-// Listener de evento para salvar tarefa
 saveTaskBtn.onclick = () => {
     const title = taskTitleInput.value.trim();
     const assignee = taskAssigneeInput.value.trim();
@@ -36,7 +34,6 @@ saveTaskBtn.onclick = () => {
     }
 }
 
-// Função para criar objeto de tarefa
 function createTask(title, assignee) {
     return {
         id: Date.now(),
@@ -46,7 +43,6 @@ function createTask(title, assignee) {
     };
 }
 
-// Função para adicionar tarefa à lista de tarefas
 function addTaskToTaskList(task) {
     tasks.push(task);
     const taskItem = createTaskElement(task);
@@ -59,7 +55,6 @@ function addTaskToTaskList(task) {
     }
 }
 
-// Função para criar elemento de tarefa
 function createTaskElement(task) {
     const taskItem = document.createElement("div");
     taskItem.classList.add("task");
@@ -74,7 +69,6 @@ function createTaskElement(task) {
     return taskItem;
 }
 
-// Função para obter botão de tarefa com base no status
 function getTaskButton(task) {
     if (task.status === "todo") {
         return `<button onclick="moveTask(${task.id}, 'in-progress')">Start</button>`;
@@ -85,7 +79,6 @@ function getTaskButton(task) {
     }
 }
 
-// Função para editar tarefa
 function editTask(id) {
     const task = tasks.find(task => task.id === id);
     taskTitleInput.value = task.title;
@@ -107,7 +100,6 @@ function editTask(id) {
     modal.style.display = "block";
 }
 
-// Função para atualizar elemento de tarefa
 function updateTaskElement(task) {
     const taskItem = document.querySelector(`.task[data-id="${task.id}"]`);
     taskItem.innerHTML = `
@@ -119,7 +111,6 @@ function updateTaskElement(task) {
     taskItem.dataset.status = task.status;
 }
 
-// Função para mover tarefa para lista diferente
 function moveTask(id, status) {
     const task = tasks.find(task => task.id === id);
     task.status = status;
@@ -128,23 +119,18 @@ function moveTask(id, status) {
     targetList.appendChild(document.querySelector(`.task[data-id="${id}"]`));
 }
 
-// Função para fechar modal
 function closeModal() {
     modal.style.display = "none";
 }
 
-// Inicializar o projeto
 initializeProject();
 
 function initializeProject() {
-    // Simular tarefas
     const mockTasks = [
-        { id: 1, title: "Task 1", assignee: "John Doe", status: "todo" },
-        { id: 2, title: "Task 2", assignee: "Jane Smith", status: "in-progress" },
-        { id: 3, title: "Task 3", assignee: "Alice Johnson", status: "done" }
+        { id: 1, title: "Task 1", assignee: "", status: "todo" },
+
     ];
 
-    // Adicionar tarefas simuladas à lista de tarefas e exibir na página
     mockTasks.forEach(task => {
         addTaskToTaskList(task);
     });
